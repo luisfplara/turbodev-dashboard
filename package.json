@@ -16,7 +16,6 @@
     "@mui/icons-material": "latest",
     "@mui/material": "latest",
     "@mui/material-nextjs": "latest",
-    "@mui/styles": "^5.15.13",
     "firebase": "^10.8.1",
     "firebase-admin": "^12.0.0",
     "next": "latest",

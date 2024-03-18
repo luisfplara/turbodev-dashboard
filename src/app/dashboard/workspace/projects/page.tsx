@@ -14,6 +14,8 @@ import { addDoc, getDocs, collection, QuerySnapshot } from 'firebase/firestore'
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { ProjectsCard } from '@/components/cards/projectsCard';
+import AddClienteDialog from '@/components/dialogs/AddProjectDialog';
+import AddProjectDialog from '@/components/dialogs/AddProjectDialog';
 
 
 
@@ -21,23 +23,25 @@ export default function Clientes() {
 
   const [open, setOpen] = React.useState(false);
   const [projectsData, setProjectsData] = React.useState<QuerySnapshot>();
+  
   const handleClickOpen = () => {
     setOpen(true);
   };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+
   const projectsCollection = collection(db, 'projects');
   React.useEffect(() => {
+
     getDocs(projectsCollection).then((data) => {
       setProjectsData(data);
 
     });
-  }, [projectsData]);
+  }, []);
 
   return (
     <Box >
+
+      <AddProjectDialog open={open} setOpen={setOpen} />
 
       <Grid>
         <Grid item xs={4}>
@@ -72,13 +76,13 @@ export default function Clientes() {
           {
             projectsData?.docs.map((QueryDocumentSnapshotData) => {
               return (
-              <Grid >
-                <Box sx={{ minWidth: 275 }}>
-                  <Card variant="outlined">
-                  <ProjectsCard name={QueryDocumentSnapshotData.data().nome}/>
+                <Grid >
+                  <Box sx={{ minWidth: 275 }}>
+                    <Card variant="outlined">
+                      <ProjectsCard document={QueryDocumentSnapshotData}/>
                     </Card>
-                </Box>
-              </Grid>
+                  </Box>
+                </Grid>
               )
             })
           }

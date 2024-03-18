@@ -1,24 +1,24 @@
 import { Button, CardActions, CardContent, Typography } from "@mui/material"
+import { QueryDocumentSnapshot } from "firebase/firestore"
 import React from "react"
 
-export const ProjectsCard = (props: { name: string }) =>  {
+export const ProjectsCard = (props: { document: QueryDocumentSnapshot }) =>  {
     return (
       <React.Fragment>
         <CardContent>
-          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-            {props.name}
-          </Typography>
           <Typography variant="h5" component="div">
-            aaa
+          {props.document.data().name}
           </Typography>
-          <Typography sx={{ mb: 1.5 }} color="text.secondary">
-            adjective
+          <Typography variant="body2" sx={{ mb: 1.5 }} color="text.secondary">
+          {props.document.data().description}
           </Typography>
           <Typography variant="body2">
-            well meaning and kindly.
-            <br />
-            {'"a benevolent smile"'}
+            Initial data: {props.document.data().initialData}
           </Typography>
+          <Typography variant="body2">
+            Stakeholder: {props.document.data().client}
+          </Typography>
+        
         </CardContent>
         <CardActions>
           <Button size="small">Learn More</Button>

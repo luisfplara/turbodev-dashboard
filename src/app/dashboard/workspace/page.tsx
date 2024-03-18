@@ -59,13 +59,7 @@ export default function Clientes() {
   const handleClose = () => {
     setOpen(false);
   };
-  const projectsCollection = collection(db, 'projects');
-  React.useEffect(()=>{
-    getDocs(projectsCollection).then((data)=>{
-      console.log(data)
 
-    });
-   },[projectsData]);
 
   //const projectsData = 
 

@@ -9,5 +9,6 @@ import Copyright from '@/components/Copyright';
 import { redirect } from 'next/navigation';
 
 export default function Home() {
-  redirect('/dashboard/home');
+  //redirect('/dashboard/home');
+  return (<div>dashboard</div>)
 }

@@ -23,12 +23,10 @@ export default function Clientes() {
 
   const [open, setOpen] = React.useState(false);
   const [projectsData, setProjectsData] = React.useState<QuerySnapshot>();
-  
+
   const handleClickOpen = () => {
     setOpen(true);
   };
-
-
   const projectsCollection = collection(db, 'projects');
   React.useEffect(() => {
 
@@ -40,7 +38,6 @@ export default function Clientes() {
 
   return (
     <Box >
-
       <AddProjectDialog open={open} setOpen={setOpen} />
 
       <Grid>
